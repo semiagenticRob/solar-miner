@@ -1,0 +1,42 @@
+enphase:
+  gateway_ip: "192.168.1.X"          # Enphase IQ Gateway local IP
+  token: "YOUR_ENPHASE_TOKEN"         # Owner token from entrez.enphaseenergy.com
+  token_expiry: "2027-04-01"          # Reminder to refresh (tokens last ~1 year)
+  poll_interval_seconds: 15           # How often to read solar production
+
+miners:
+  - name: "s19-alpha"
+    ip: "192.168.1.Y"
+    min_power_watts: 1800             # Floor from calibration (below this, miner is unstable)
+    max_power_watts: 3250             # Ceiling (stock S19)
+    ramp_step_watts: 200              # Max change per control cycle
+  - name: "s19-beta"
+    ip: "192.168.1.Z"
+    min_power_watts: 1800
+    max_power_watts: 3250
+    ramp_step_watts: 200
+
+control:
+  safety_buffer_watts: 400            # Always keep this much below surplus (larger for modeled consumption)
+  min_surplus_to_start_watts: 2000    # Don't start a miner below this surplus
+  smoothing_window_seconds: 120       # Moving average window for surplus signal
+  ramp_interval_seconds: 30           # How often to adjust power targets
+  max_grid_draw_watts: 50             # If grid draw exceeds this, emergency ramp-down
+  night_mode: "shutdown"              # "shutdown" or "idle" when surplus = 0
+
+consumption:
+  source: "profile"                   # "profile" (billing data model) or "enphase" (real-time CTs)
+  profile_path: "./data/consumption_profile.yaml"  # Hour-of-day consumption model
+
+logging:
+  level: "INFO"
+  db_path: "./data/solar_miner.db"
+
+notifications:
+  enabled: false
+  service: "ntfy"                     # "ntfy" or "pushover"
+  topic: "solar-miner"               # ntfy topic or pushover app key
+
+dashboard:
+  enabled: false
+  port: 8080

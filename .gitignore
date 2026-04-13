@@ -1,0 +1,19 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+dist/
+build/
+
+# Config with secrets
+config.yaml
+
+# Data directory (local SQLite, profiles)
+data/
+
+# OS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
