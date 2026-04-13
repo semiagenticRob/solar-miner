@@ -8,8 +8,10 @@ build/
 # Config with secrets
 config.yaml
 
-# Data directory (local SQLite, profiles)
-data/
+# Data directory — ignore runtime data, track reference data
+data/*.db
+data/*.json
+!data/*.yaml
 
 # OS
 .DS_Store

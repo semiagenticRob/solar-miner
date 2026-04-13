@@ -1,0 +1,138 @@
+# Xcel Energy billing history — 6925 W 62nd Pl, Arvada CO
+# Source: Xcel "My Account" usage report, Apr 2024 - Mar 2026
+# Pre-solar months (Apr 2024 - Feb 2025) show TRUE house consumption
+# Post-solar months (Mar 2025+) show NET grid consumption (house - solar used directly)
+
+billing:
+  # Pre-solar (actual house consumption — no solar offset)
+  - month: 2024-04
+    period: "2024-03-11 to 2024-04-09"
+    total_kwh: 694
+    on_peak_kwh: 59
+    mid_peak_kwh: 7
+    off_peak_kwh: 628
+    rate: tou
+  - month: 2024-05
+    period: "2024-04-09 to 2024-05-08"
+    total_kwh: 678
+    on_peak_kwh: 67
+    mid_peak_kwh: 7
+    off_peak_kwh: 604
+    rate: tou
+  - month: 2024-06
+    period: "2024-05-08 to 2024-06-09"
+    total_kwh: 720
+    on_peak_kwh: 72
+    mid_peak_kwh: 5
+    off_peak_kwh: 642
+    rate: tou
+  - month: 2024-07
+    period: "2024-06-09 to 2024-07-09"
+    total_kwh: 773
+    on_peak_kwh: 127
+    mid_peak_kwh: 22
+    off_peak_kwh: 624
+    rate: tou
+  - month: 2024-08
+    period: "2024-07-09 to 2024-08-07"
+    total_kwh: 873
+    on_peak_kwh: 176
+    mid_peak_kwh: 31
+    off_peak_kwh: 666
+    rate: tou
+  - month: 2024-09
+    period: "2024-08-07 to 2024-09-08"
+    total_kwh: 913
+    on_peak_kwh: 158
+    mid_peak_kwh: 19
+    off_peak_kwh: 735
+    rate: tou
+  - month: 2024-10
+    period: "2024-09-08 to 2024-10-07"
+    total_kwh: 732
+    on_peak_kwh: 116
+    mid_peak_kwh: 8
+    off_peak_kwh: 608
+    rate: tou
+  - month: 2024-11
+    period: "2024-10-07 to 2024-11-05"
+    total_kwh: 717
+    on_peak_kwh: 87
+    mid_peak_kwh: 13
+    off_peak_kwh: 616
+    rate: tou
+  - month: 2024-12
+    period: "2024-11-05 to 2024-12-08"
+    total_kwh: 856
+    on_peak_kwh: 113
+    mid_peak_kwh: 23
+    off_peak_kwh: 720
+    rate: tou
+  - month: 2025-01
+    period: "2024-12-08 to 2025-01-08"
+    total_kwh: 605
+    on_peak_kwh: 91
+    mid_peak_kwh: 18
+    off_peak_kwh: 496
+    rate: tou
+  - month: 2025-02
+    period: "2025-01-08 to 2025-02-09"
+    total_kwh: 516
+    on_peak_kwh: 64
+    mid_peak_kwh: 5
+    off_peak_kwh: 447
+    rate: tou
+
+  # Post-solar (net grid consumption = house - solar self-consumed)
+  - month: 2025-03
+    period: "2025-02-09 to 2025-03-11"
+    total_kwh: 474
+    rate: standard
+  - month: 2025-04
+    period: "2025-03-11 to 2025-04-09"
+    total_kwh: 328
+    rate: standard
+  - month: 2025-05
+    period: "2025-04-09 to 2025-05-08"
+    total_kwh: 222
+    rate: standard
+  - month: 2025-06
+    period: "2025-05-08 to 2025-06-09"
+    total_kwh: 240
+    rate: standard
+  - month: 2025-07
+    period: "2025-06-09 to 2025-07-09"
+    total_kwh: 374
+    rate: standard
+  - month: 2025-08
+    period: "2025-07-09 to 2025-08-07"
+    total_kwh: 459
+    rate: standard
+  - month: 2025-09
+    period: "2025-08-07 to 2025-09-08"
+    total_kwh: 440
+    rate: standard
+  - month: 2025-10
+    period: "2025-09-08 to 2025-10-07"
+    total_kwh: 301
+    rate: standard
+  - month: 2025-11
+    period: "2025-10-07 to 2025-11-05"
+    total_kwh: 303
+    rate: standard
+  - month: 2025-12
+    period: "2025-11-05 to 2025-12-08"
+    total_kwh: 353
+    rate: standard
+  - month: 2026-01
+    period: "2025-12-08 to 2026-01-08"
+    total_kwh: 371
+    rate: standard
+  - month: 2026-02
+    period: "2026-01-08 to 2026-02-09"
+    total_kwh: 385
+    rate: standard
+  - month: 2026-03
+    period: "2026-02-09 to 2026-03-11"
+    total_kwh: 332
+    rate: standard
