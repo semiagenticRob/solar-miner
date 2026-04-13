@@ -148,20 +148,30 @@ def run_simulation(
     print(f"Mining hours:             {mining_hours:>10.1f} hrs")
     print()
 
-    # Economics (rough estimates)
+    # Economics — using actual Xcel Flat Rate (R-OO) rates
     # S19 at 34 J/TH → ~95 TH at 3250W
-    # Revenue ~$0.037/kWh at current hashprice
-    btc_revenue_per_kwh = 0.037
-    xcel_credit_per_kwh = 0.08  # rough average
+    btc_revenue_per_kwh = 0.037  # approximate at current hashprice
+    xcel_summer = 0.10380  # Jun-Sep
+    xcel_winter = 0.08570  # Oct-May
+    # Use weighted average based on simulation period, or default to winter (Oct-May = 8 months)
+    xcel_avg = (xcel_summer * 4 + xcel_winter * 8) / 12  # $0.0917 weighted annual avg
     mined_kwh = total_mined_wh / 1000
     exported_kwh = total_exported_wh / 1000
 
-    print(f"Estimated BTC revenue:    ${mined_kwh * btc_revenue_per_kwh:>10.2f} (at ${btc_revenue_per_kwh}/kWh)")
-    print(f"Xcel credit (if exported): ${(mined_kwh + exported_kwh) * xcel_credit_per_kwh:>9.2f} (at ${xcel_credit_per_kwh}/kWh)")
-    print(f"Net difference:           ${mined_kwh * btc_revenue_per_kwh - mined_kwh * xcel_credit_per_kwh:>10.2f}")
+    print("ECONOMICS (Xcel Flat Rate R-OO)")
+    print("-" * 50)
+    print(f"  BTC mining revenue:       ${mined_kwh * btc_revenue_per_kwh:>8.2f}  ({mined_kwh:.1f} kWh x ${btc_revenue_per_kwh}/kWh)")
+    print(f"  Lost Xcel export credit:  ${mined_kwh * xcel_avg:>8.2f}  ({mined_kwh:.1f} kWh x ${xcel_avg:.4f}/kWh avg)")
+    print(f"  Net fiat difference:      ${mined_kwh * btc_revenue_per_kwh - mined_kwh * xcel_avg:>8.2f}")
+    print(f"  Still exported to grid:   ${exported_kwh * xcel_avg:>8.2f}  ({exported_kwh:.1f} kWh)")
     print()
-    print("NOTE: BTC revenue estimate uses current hashprice. Actual revenue depends on")
-    print("network difficulty, pool luck, and BTC price at time of payout/sale.")
+    print(f"  Summer rate (Jun-Sep):    ${xcel_summer}/kWh — opportunity cost ${xcel_summer - btc_revenue_per_kwh:.4f}/kWh")
+    print(f"  Winter rate (Oct-May):    ${xcel_winter}/kWh — opportunity cost ${xcel_winter - btc_revenue_per_kwh:.4f}/kWh")
+    print()
+    print("  NOTE: In pure fiat terms, exporting beats mining at current hashprice.")
+    print("  The case for mining: BTC accumulation, heat credit, sunk hardware cost,")
+    print("  and future hashprice improvement. This is the parametric model from")
+    print("  Monetizing the Megawatt: Revenue + Heat Credit + Load Credit > Electrical Cost + OpEx")
 
 
 def main():
