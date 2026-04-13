@@ -1,8 +1,16 @@
 enphase:
-  gateway_ip: "192.168.1.X"          # Enphase IQ Gateway local IP
-  token: "YOUR_ENPHASE_TOKEN"         # Owner token from entrez.enphaseenergy.com
+  gateway_ip: "192.168.1.X"          # Enphase IQ Gateway local IP (for real-time control loop)
+  token: "YOUR_LOCAL_GATEWAY_TOKEN"   # Owner token from entrez.enphaseenergy.com
   token_expiry: "2027-04-01"          # Reminder to refresh (tokens last ~1 year)
   poll_interval_seconds: 15           # How often to read solar production
+
+# Enphase Enlighten Cloud API (for historical data, consumption check, OAuth-based)
+# Get credentials from developer.enphase.com
+enphase_cloud:
+  api_key: "YOUR_API_KEY"             # From developer.enphase.com app page
+  client_id: "YOUR_CLIENT_ID"
+  client_secret: "YOUR_CLIENT_SECRET"
+  token_path: "./data/enphase_tokens.json"  # OAuth tokens stored here (auto-managed)
 
 miners:
   - name: "s19-alpha"
